@@ -86,7 +86,8 @@ lsmod | grep monitor
 
 ### Screenshot 1 — Multi-Container Supervision
 
-![Screenshot 1](screenshot/screenshot%201.png)
+![Screenshot 1](screenshot/screenshot%201.png)<img width="866" height="360" alt="image" src="https://github.com/user-attachments/assets/3cce4ed6-b0b4-4157-89d0-dbb6c8d2e66d" />
+
 
 *Two containers launched under one supervisor: alpha (PID 6414) and beta (PID 6426) both running concurrently.*
 
@@ -94,7 +95,8 @@ lsmod | grep monitor
 
 ### Screenshot 2 — Metadata Tracking
 
-![Screenshot 2](screenshot/screenshot%202.png)
+![Screenshot 2](screenshot/screenshot%202.png)<img width="866" height="670" alt="image" src="https://github.com/user-attachments/assets/68738739-42d5-4020-8f2f-4aca74a70e5d" />
+
 
 *`engine ps` shows container IDs, host PIDs, states (running), and hard memory limits for both containers.*
 
@@ -102,7 +104,8 @@ lsmod | grep monitor
 
 ### Screenshot 3 — Bounded-Buffer Logging
 
-![Screenshot 3](screenshot/screenshot%203.png)
+![Screenshot 3](screenshot/screenshot%203.png)<img width="866" height="670" alt="image" src="https://github.com/user-attachments/assets/1966bb29-2283-47f2-a177-3d7c17d15248" />
+
 
 *`engine logs alpha` reads from `logs/alpha.log`, populated by the supervisor's bounded-buffer producer/consumer pipeline capturing container stdout.*
 
@@ -110,7 +113,8 @@ lsmod | grep monitor
 
 ### Screenshot 4 — CLI and IPC
 
-![Screenshot 4](screenshot/screenshot%204.png)
+![Screenshot 4](screenshot/screenshot%204.png)<img width="866" height="670" alt="image" src="https://github.com/user-attachments/assets/51b6eec9-1832-43ec-a04c-c11ce9ee56c9" />
+
 
 *`engine stop alpha` sends a command over the UNIX domain socket. The supervisor responds with "Sent SIGTERM to container 'alpha'", confirming the IPC channel works.*
 
@@ -118,7 +122,8 @@ lsmod | grep monitor
 
 ### Screenshot 5 — Soft-Limit Warning
 
-![Screenshot 5](screenshot/screenshot%205%206.png)
+![Screenshot 5](screenshot/screenshot%205%206.png)<img width="866" height="670" alt="image" src="https://github.com/user-attachments/assets/75952235-6773-4f42-b035-a954e9385477" />
+
 
 *dmesg shows `[container_monitor] SOFT LIMIT container=memtest pid=6757 rss=59318272 limit=52428800` — the kernel module detected RSS exceeding the soft limit and logged a warning.*
 
@@ -126,7 +131,8 @@ lsmod | grep monitor
 
 ### Screenshot 6 — Hard-Limit Enforcement
 
-![Screenshot 6](screenshot/screenshot%205%206.png)
+![Screenshot 6](screenshot/screenshot%205%206.png)<img width="866" height="670" alt="image" src="https://github.com/user-attachments/assets/3bb0abf6-27d0-4c96-b912-92d5ab79cbd6" />
+
 
 *dmesg shows `[container_monitor] HARD LIMIT container=memtest pid=6757 rss=210444288 limit=209715200` — the kernel module sent SIGKILL and the container was terminated.*
 
@@ -134,7 +140,8 @@ lsmod | grep monitor
 
 ### Screenshot 7 — Scheduling Experiment
 
-![Screenshot 7](screenshot/screenshot%207.png)
+![Screenshot 7](screenshot/screenshot%207.png)<img width="1214" height="768" alt="image" src="https://github.com/user-attachments/assets/71404168-c967-4325-b309-349a73895e8d" />
+
 
 *cpuA (nice=0) and cpuB (nice=15) ran the same cpu_hog workload simultaneously. Both completed 10 seconds but cpuA received more CPU time from the CFS scheduler due to its higher priority weight.*
 
@@ -142,8 +149,10 @@ lsmod | grep monitor
 
 ### Screenshot 8 — Clean Teardown
 
-![Screenshot 8](screenshot/screenshot%208.png)
-![Screenshot 9](screenshot/screenshot%209.png)
+![Screenshot 8](screenshot/screenshot%208.png)<img width="866" height="670" alt="image" src="https://github.com/user-attachments/assets/867f5cca-cdac-4d99-861f-09bd141bf817" />
+
+![Screenshot 9](screenshot/screenshot%209.png)<img width="866" height="670" alt="image" src="https://github.com/user-attachments/assets/e9856449-22ca-4e0a-ae5b-2c6be56769ed" />
+
 
 *`ps aux | grep defunct` shows no zombie processes. `sudo rmmod monitor` succeeds. `lsmod | grep monitor` returns nothing — clean teardown confirmed.*
 
